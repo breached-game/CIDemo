@@ -38,7 +38,6 @@ jobs:
           git lfs pull
           git add .
           git reset --hard
-
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
@@ -47,7 +46,6 @@ jobs:
           restore-keys: |
             Library-test-project-
             Library-
-
       - uses: game-ci/unity-test-runner@v2.0-alpha-5
         id: testRunner
         with:
@@ -61,21 +59,42 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
           
 
-  report:
+  # commitToMain:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Commit code
+  #       run: |
+  #         git config --global user.name 'Your Name'
+  #         git config --global user.email 'your-username@users.noreply.github.com'
+  #         git commit -am "Comitted from dev to main"
+  #         git push
+  #         #git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/your/repo
+  
+  commitToMainNew:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Create report file
-        run: date +%s > report.txt
-      - name: Commit report
-        run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
-          git add .
-          git commit -am "Automated report"
-          git push origin master
-#hello        
+      - name: check code
+        uses: actions/checkout@v2
 
+      - name: git commit data
+        uses: rlespinasse/git-commit-data-action@v1.x
+
+      - name: update auth info
+        run: echo ${{env.GIT_COMMIT_AUTHOR_NAME}} > AUTHOR
+
+      - name: Make PR 
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: "updating master to dev"
+          base: dev
+          title: "update master"
+          commiter: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+          author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+          body:
+            This is to shows the update of master to the dev
+          token: ${{secrects.GITHUB_TOKEN}}
+          delete-branch: true
 #  buildWebGL:
 #    needs: testRunner
 #    name: Build for WebGL 🖥️
