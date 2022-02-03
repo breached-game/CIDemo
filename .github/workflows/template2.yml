@@ -61,18 +61,18 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
           
 
-  commitToMain:
+  report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Commit code
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
         run: |
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
-          git add .
-          git commit -am "Comitted from dev to main"
-          git push -u origin master
-          #git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/your/repo
+          git commit -am "Automated report"
+          git push
 #hello        
 
 #  buildWebGL:
