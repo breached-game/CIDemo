@@ -89,7 +89,7 @@ jobs:
           branch: "updating master to dev"
           base: dev
           title: "update master"
-          commiter: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+          committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
           author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
           body:
             This is to shows the update of master to the dev
