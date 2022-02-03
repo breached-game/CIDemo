@@ -74,7 +74,8 @@ jobs:
   commitToMainNew:
     runs-on: ubuntu-latest
     steps:
-
+      - uses: actions/checkout@v2
+      
       - name: git commit data
         uses: rlespinasse/git-commit-data-action@v1.x
 
@@ -91,7 +92,7 @@ jobs:
 #          author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
           body:
             This is to shows the update of master to the dev
-          token: ${{secrets.PAT}}
+          token: ${{secrets.GITHUB_TOKEN}}
 
 #  buildWebGL:
 #    needs: testRunner
