@@ -70,8 +70,8 @@ jobs:
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
           git commit -am "Comitted from dev to main"
-          #git push
-          git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/your/repo
+          git push
+          #git remote set-url --push origin https://your_username:$GITHUB_TOKEN@github.com/your/repo
         
 
 #  buildWebGL:
