@@ -6,7 +6,7 @@ Initially we drew inspiration from the docs below which provide a guidline on us
 
 https://game.ci/docs/introduction/getting-started
 
-We chose to work with Github Actions over Docker based solutions, due to it's integration with Github.
+We chose to work with Github Actions over other solutions, due to it's integration with Github.
 
 A current soluton allows us to run checks before building our unity project. It works with a prototype of our game which consists of characters in a submarine world with one interaction possibility. 
 
