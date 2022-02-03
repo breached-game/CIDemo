@@ -15,4 +15,3 @@ A current soluton allows us to run checks before building our unity project. It 
 - Add additional EditMode and PlayMode tests
 - Expand the workflow to work with two branches "dev" and "main" 
   
-Added for workflow
