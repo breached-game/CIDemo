@@ -87,12 +87,12 @@ jobs:
           branch: "updating master to dev"
           base: dev
           title: "update master"
-          committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
-          author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+#          committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
+#          author: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
           body:
             This is to shows the update of master to the dev
           token: ${{secrets.GITHUB_TOKEN}}
-          delete-branch: true
+
 #  buildWebGL:
 #    needs: testRunner
 #    name: Build for WebGL 🖥️
