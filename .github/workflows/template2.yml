@@ -85,7 +85,7 @@ jobs:
       - name: Make PR 
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: "updating master to dev"
+          branch: "master"
           base: dev
           title: "update master"
 #          committer: ${{env.GIT_COMMIT_AUTHOR_NAME}} <${{env.GIT_COMMIT_AUTHOR_EMAIL}}">
